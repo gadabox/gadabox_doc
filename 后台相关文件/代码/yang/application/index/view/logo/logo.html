@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>嘎哒箱</title>
+    <style>
+        html,body{
+            margin: 0;
+            width:99%;height:99%;
+        }
+        .root{
+            width:100%;height:100%;
+            position:fixed;
+            background-image: url("/image/first.png");
+
+
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .edge
+        {
+            box-shadow:0 0 2px #999999;
+            border: 1px #e5e5e5;
+            border-top-left-radius: 35px;
+            border-bottom-left-radius: 35px;
+            border-top-right-radius: 35px;
+            border-bottom-right-radius: 35px;
+            width: 80px;
+            height: 32px;
+            float: left;
+            margin-top: 4%;
+            margin-left: 75%;
+        }
+        .time{
+            position:relative;
+
+           /* right:5px;
+            width:60px;
+            height:40px;
+            font-size: 12px;*/
+
+           /* line-height:40px;*/
+            float: left;
+            padding-left: 13px;
+            text-align:center;
+            border-right:none;
+            font-size: 12px;
+            vertical-align: middle;
+            padding-top: 8px;
+            /*border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;*/
+
+        }
+        .cut{
+            position:relative;
+            float: left;
+            font-size: 12px;
+            padding-right: 4px;
+            padding-left: 4px;
+            vertical-align: middle;
+            padding-top: 8px;
+        }
+        .end{
+            position:relative;
+           /* top:-33px;
+            right:-35px;
+            width:60px;
+            height:40px;
+            font-size: 12px;*/
+
+            float: left;
+            font-size: 12px;
+           /* line-height:40px;*/
+            text-align:center;
+            /*border-left:none;*/
+            height: 64px;
+            padding-top: 8px;
+            padding-right: 0px;
+            /* border-top-right-radius: 25px;
+             border-bottom-right-radius: 25px;*/
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div class="edge" >
+            <div class="time"  style="color:#999">5秒</div>
+            <div class="cut" style="color: #e5e5e5;">|</div>
+            <div class="end"  style="color:#999">跳过</div>
+        </div>
+    </div>
+</body>
+<script>
+
+    function ShowTheObject(obj){
+        var des = "";
+        for(var name in obj){
+            des += name + ":" + obj[name] + ";";
+        }
+        dump(name);
+    }
+    /*
+    function obj2string(o){
+        var r=[];
+        if(typeof o=="string"){
+            return "\""+o.replace(/([\'\"\\])/g,"\\$1").replace(/(\n)/g,"\\n").replace(/(\r)/g,"\\r").replace(/(\t)/g,"\\t")+"\"";
+        }
+        if(typeof o=="object"){
+            if(!o.sort){
+                for(var i in o){
+                    r.push(i+":"+obj2string(o[i]));
+                }
+                if(!!document.all&&!/^\n?function\s*toString\(\)\s*\{\n?\s*\[native code\]\n?\s*\}\n?\s*$/.test(o.toString)){
+                    r.push("toString:"+o.toString.toString());
+                }
+                r="{"+r.join()+"}";
+            }else{
+                for(var i=0;i<o.length;i++){
+                    r.push(obj2string(o[i]))
+                }
+                r="["+r.join()+"]";
+            }
+            return r;
+        }
+        return o.toString();
+    }
+    */
+    var timeDiv = document.getElementsByClassName("time")[0];
+    var tim = 5;
+    var timer = setInterval(function(){
+        tim--;
+        document.getElementsByClassName("time")[0].innerHTML = tim + "秒";
+        document.getElementsByClassName("end")[0].onclick = function(){
+            clearInterval(timer);
+            document.getElementsByClassName("root")[0].style.display = "none";
+
+
+        //    document.write( obj2string(client));
+
+             client.close();
+
+
+          //  document.write( "client called");
+
+
+          //  ShowTheObject(window);
+
+          //  document.write("hhhhh");
+
+          //  var clientobj = document.getElementById("client");
+
+         //   print_r(clientobj.innerHTML);
+
+          //  document.getElementById("client").close();
+
+
+       //     document.write("client is    : "+client.toString());
+
+          //  document.write("aaahhhhhhhhhhh");
+
+
+        //    return window.client.close();
+        };
+        if(tim==(0)){
+
+            clearInterval(timer);
+            document.getElementsByClassName("root")[0].style.display = "none";
+            client.close();// 不掉起tp直接访问HTML，这段关闭代码要放开始，否则计时器到零并不停止关闭。
+
+          //  document.write( "client called");
+        }
+    },1000);
+
+</script>
+</html>

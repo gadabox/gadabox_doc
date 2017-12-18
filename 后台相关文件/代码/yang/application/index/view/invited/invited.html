@@ -1,0 +1,213 @@
+<html>
+	<head>
+		<title>嘎哒箱</title>
+		<meta charset="UTF-8"/>
+		<style>
+			html,body{
+				margin: 0;
+				width: 99%;
+				height: 99%;
+			}
+			.root{
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				background-image: url("/image/invited_bg.png");
+				background-repeat: no-repeat;
+				background-size: 100%,100%;
+			}
+			.gadabox{
+				float: left;
+				margin-left: 20%;
+				margin-top: 25%;
+			}
+			.content{
+				
+				width: 64%;
+				height: 30%;
+				background-image: url(/image/hint_bg.png);
+				background-repeat: no-repeat;
+				background-size: 100%,100%;
+				float: left;
+				margin-left: 17%;
+				margin-top: 5%;
+			}
+			.notice{
+				float:left;
+				font-size: 40px;
+				color: #f15b4a;
+				padding-left:10%;
+				padding-top:5%;
+								
+			}
+			.input_phone{
+				float:left;
+				
+				<!-- 
+				
+			
+			--> 
+			}
+			.phone
+			{
+				float:left;
+				margin-top:4px;
+				width:320px;
+				height:76px;
+			}
+			.number{
+				
+				padding-top:16px;
+				padding-left:15px;
+				font-size:32px;
+				float:left;
+				height:53px;
+				
+			}
+			.a{
+			background-image: url(/image/iphone-num.png);
+			background-repeat: no-repeat;
+			background-size: 100%,100%;
+			float:left;
+			width:500px;
+			height:90px;
+			margin-left:25%;
+			margin-top:-10%;
+			}
+			.b{
+			float:left;
+			margin-left:25%;
+			margin-top:2%;
+			width:100%;
+			}
+			.input{
+			float:left;
+			width:200px;
+			height:80px;
+			margin-left:50px;
+			position:relative;
+			}
+			.daojishi{
+			background-image: url(/image/yellow.png);
+			background-repeat: no-repeat;
+			background-size: 100%,100%;
+			position:absolute;
+			width:200px;
+			height:80px;
+			display:none;
+			line-height:80px;
+			text-align:center;
+			font-size:35px ;
+			}
+			.c{
+			float:left;
+			background-image: url(/image/verification-code.png);
+			background-repeat: no-repeat;
+			background-size: 100%,100%;
+			width:250px;
+			height:90px;
+			}
+			.num{
+			margin-left:35px;
+			margin-top:6px;
+			width:180px;
+			height:70px;
+			}
+			.d{
+			float:left;
+			width:100%;
+			}
+			.e{
+			float:left;
+			font-size:32px;
+			color:white;
+			width:100%;
+			margin-left:25%;
+			margin-top:6%;
+			}
+			.f{
+			float:left;
+			background-image: url(/image/get.png);
+			background-repeat: no-repeat;
+			background-size: 100%,100%;
+			margin-top:45px;
+			margin-left:250px;
+			width:500px;
+			height:95px;
+			}
+			.g{
+			width:420px;
+			height:95px;
+			margin-left:40px;
+			background: transparent;
+			opacity: 0;
+			}
+			.h{
+			width:200px;
+			height:80px;
+			background-image: url(/image/btn-y.png);
+			background-repeat: no-repeat;
+			background-size: 100%,100%;
+			background-color: transparent;
+			border:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="root">
+			<img class="gadabox" src="/image/invited_title.png"></img>
+			<div class="content">
+			<div class="notice">
+				{foreach $phone as $v}
+			<ul style="list-style-type:none">
+				<li style="margin-bottom:10px">我是{$v['phone']}用户，</li>
+				<li style="margin-bottom:10px">邀请你使用嘎哒箱APP，</li>
+				<li style="margin-bottom:10px">现在注册还送两张配送券！</li>
+			</ul>
+				{/foreach}
+			</div>
+			</div>
+			<div class="a">
+				 <div class="number">手机号码</div>
+				<input type="text" class="phone" id="phone" style="border-style:none" /> 
+			</div>
+			<div class="b">
+			<div class="c">
+				<input type="text" class="num" id="num" style="border-style:none"/>
+			</div>
+			<div class="input">
+				<input class="h" type="button" onclick="daojishi()" />
+				<div class="daojishi"></div>
+			</div>
+			</div>
+			<div class="d">
+				<div class="e">领券后即代表注册成功</div>
+				<div class="f">
+					<input class="g" type="button" />
+				</div>	
+			</div>
+		</div>
+	</body>
+	<script>
+
+		var btn1 = document.getElementsByClassName("h")[0];
+		var djs = document.getElementsByClassName("daojishi")[0];
+		var h = 60;
+		var t = {};
+		function daojishi(){
+			btn1.style.display = "none";
+			djs.style.display = "block";
+			djs.innerHTML = h + "秒";
+			t = window.setInterval(function(){
+				h--;
+				djs.innerHTML = h + "秒";
+				if(h<=0){
+					btn1.style.display = "block";
+					djs.style.display = "none";
+					h=60;
+					window.clearInterval(t);
+				}
+			}, 1000); 
+		}
+	</script>
+</html>
